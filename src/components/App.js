@@ -1,9 +1,9 @@
 import React from 'react';
-import {CurrentUserContext} from "../contexts/CurrentUserContext";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
 import ImagePopup from "./ImagePopup";
+import {CurrentUserContext} from "../contexts/CurrentUserContext";
 import {api} from "../utils/Api";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -12,7 +12,7 @@ import ConfirmDeletePopup from "./ConfirmDeletePopup";
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({
-    avatar: '../images/loader.gif',
+    avatar: '../images/loading.gif',
     name: 'Загрузка',
     about: 'Загрузка',
     _id: ''
