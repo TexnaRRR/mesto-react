@@ -22,7 +22,7 @@ function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isConfirmDeletePopupOpen, setConfirmDeletePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
+  const [selectedCard, setSelectedCard] = React.useState(null);
   const [cardId, setCardId] = React.useState('');
 
   React.useEffect(() => {
@@ -99,6 +99,7 @@ function App() {
 
     const handleOverlayClick = (evt) => {
       if (evt.target.classList.contains('popup_opened')) {
+        console.log(1)
         closeAllPopups();
       }
     };
@@ -107,7 +108,7 @@ function App() {
       document.addEventListener('click', handleOverlayClick);
       return () => {
         document.removeEventListener('keydown', handleEscPress);
-        document.removeEventListener('mousedown', handleOverlayClick);
+        document.removeEventListener('click', handleOverlayClick);
       }
     }
   }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen, isConfirmDeletePopupOpen, selectedCard])
@@ -151,7 +152,7 @@ function App() {
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
     setConfirmDeletePopupOpen(false);
-    setSelectedCard({});
+    setSelectedCard(null);
   }
 
   return (
@@ -175,10 +176,15 @@ function App() {
           <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
           <ConfirmDeletePopup isOpen={isConfirmDeletePopupOpen} onClose={closeAllPopups}
                               onConfirmDelete={handleCardDelete}/>
-          <ImagePopup
-            card={selectedCard}
-            onClose={closeAllPopups}
-          />
+
+          <span> selectedCard </span>                 
+         if (selectedCard) {
+
+          // <ImagePopup
+          // card={selectedCard}
+          // onClose={closeAllPopups}
+        // />
+         } 
         </div>
 
       </div>
