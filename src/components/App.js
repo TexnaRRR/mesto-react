@@ -99,7 +99,6 @@ function App() {
 
     const handleOverlayClick = (evt) => {
       if (evt.target.classList.contains('popup_opened')) {
-        console.log(1)
         closeAllPopups();
       }
     };
@@ -177,14 +176,10 @@ function App() {
           <ConfirmDeletePopup isOpen={isConfirmDeletePopupOpen} onClose={closeAllPopups}
                               onConfirmDelete={handleCardDelete}/>
 
-          <span> selectedCard </span>                 
-         if (selectedCard) {
-
-          // <ImagePopup
-          // card={selectedCard}
-          // onClose={closeAllPopups}
-        // />
-         } 
+          {selectedCard && <ImagePopup
+            card={selectedCard}
+            onClose={closeAllPopups} />
+          }
         </div>
 
       </div>
